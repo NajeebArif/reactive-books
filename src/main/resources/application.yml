@@ -1,4 +1,6 @@
 server:
+  error:
+    include-message: always
   port: 9000
   shutdown: graceful
   netty:
