@@ -1,0 +1,20 @@
+server:
+  port: 9000
+  shutdown: graceful
+  netty:
+    connection-timeout: 2s
+    idle-timeout: 15s
+
+spring:
+  r2dbc:
+    username: postgres
+    password: postgres
+    url: r2dbc:postgresql://localhost:5432/book_db
+    pool:
+      max-create-connection-time: 2s
+      initial-size: 5
+      max-size: 10
+  application:
+    name: book-service
+  lifecycle:
+    timeout-per-shutdown-phase: 15s

@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  book-postgres:
+    image : "postgres"
+    container_name: "book-postgres"
+    healthcheck:
+      test:  ["CMD-SHELL", "pg_isready", "-d", "book_db"]
+      interval: 5s
+      timeout: 10s
+      retries: 120
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - PGUSER=postgres
+    volumes:
+      - ./postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql
