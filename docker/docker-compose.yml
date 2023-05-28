@@ -13,6 +13,9 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=dbook_db
       - PGUSER=postgres
+      - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - ./postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./../out/database:/var/lib/postgresql/data
